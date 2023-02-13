@@ -1,0 +1,47 @@
+
+defaultEmail : valentin.thomas@fasst.io
+scopes :
+  - label: Déclaration de décès
+    scope: DECLARATION_DE_DECES
+
+  - label: Déclaration d’arrêt de travail
+    scope : DECLARATION_ARRET_TRAVAIL
+
+  - label: Déclaration de mise en invalidité
+    scope: DECLARATION_MISE_INVALIDITE
+
+  - label: Demande d’information
+    scope: DEMANDE_INFORMATION
+
+  - label: Autre
+    scope: AUTRE
+
+  - label: Réclamation prestations
+    scope: RECLAMATION_PRESTATION
+
+  - label: Réclamation adhésion/cotisation
+    scope: RECLAMATION_ADHESION_COTISATION
+
+  - label : Demande d’information
+    scope: DEMANDE_INFORMATION_SOUSCRIPTION
+
+  - label: Demande de copie de contrat
+    scope: DEMANDE_COPIE_CONTRAT
+
+  - label: Changement d’adresse
+    scope: CHANGEMENT_ADRESSE
+
+  - label : Modification des coordonnées bancaires
+    scope: MODIF_COORDONNES_BANCAIRES
+
+  - label: Demande d’attestation Madelin
+    scope: DEMANDE_ATTESTATION_MADELIN
+
+  - label: Procédure de résiliation de contrat
+    scope: PROCEDURE_RESILIATION_CONTRAT
+
+  - label: autre
+    scope: AUTRE_SOUSCRIPTION
+
+  - label: Contacter COM_TAILWIND
+    scope: CONTACTER_COM_TAILWIND

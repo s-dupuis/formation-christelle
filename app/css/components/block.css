@@ -1,0 +1,32 @@
+.f-block {
+  @apply flex flex-col mt-4 p-3 bg-white;
+  width: calc(100vw - 60px);
+
+  @screen md {
+    @apply w-full;
+  }
+  border-radius: 5px;
+  box-shadow: 0 0 14px 0 rgba(0, 0, 0, 0.09);
+}
+.f-block-body {
+  @apply w-full;
+}
+
+.f-block-title {
+  font-size: 18px;
+  font-weight: bold;
+  text-transform: uppercase;
+  font-stretch: condensed;
+}
+
+.f-block-blue {
+
+  border-left-width: 12px;
+}
+
+.f-block-arrow-container {
+  @apply flex justify-center items-center cursor-pointer;
+  width: 42px;
+  height: 42px;
+  border-radius: 8px;
+}

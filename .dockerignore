@@ -1,0 +1,12 @@
+node_modules/*
+temp
+uploads
+downloads
+.idea
+.vscode
+.git
+Dockerfile
+spec
+.drone.yml
+.gitignore
+docker-compose.yml

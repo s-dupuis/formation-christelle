@@ -1,0 +1,29 @@
+.f-table {
+  @apply overflow-x-scroll;
+}
+
+.f-table-rows {
+  @apply my-2;
+  border-top: solid 1px #b2bbc4;
+}
+.f-table-row {
+  @apply p-2;
+  &:nth-child(even) {
+  }
+}
+
+.f-block-table {
+  @apply border border-gray-300 rounded-xl p-3 my-3 text-left;
+}
+
+.f-block-table table {
+  @apply w-full;
+}
+
+.f-block-table table td {
+
+}
+
+.f-block-table table th {
+  @apply w-1/3;
+}

@@ -1,0 +1,13 @@
+.f-attachments {
+  @apply mb-4;
+}
+
+.f-attachments li {
+  width: 100%;
+  @apply flex justify-between items-center p-2;
+  border-radius: 4px;
+}
+
+.f-attachments li img {
+  @apply cursor-pointer;
+}

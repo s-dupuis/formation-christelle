@@ -1,0 +1,16 @@
+.f-page {
+  @apply p-5 bg-white w-screen min-h-screen;
+  @screen md {
+    @apply w-full;
+  }
+  max-width: 834px;
+}
+
+.f-page-fw {
+  margin: 0px auto;
+}
+
+.f-page-title {
+  @apply m-0 text-2xl uppercase;
+  font-stretch: condensed;
+}

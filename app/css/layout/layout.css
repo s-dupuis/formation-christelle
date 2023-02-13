@@ -1,0 +1,66 @@
+.f-layout {
+  @apply flex flex-col w-screen;
+}
+
+.f-layout-row {
+  @apply flex;
+  margin-top: 110px;
+}
+
+.f-layout-top {
+  height: 110px;
+  border-bottom: solid 1px #ececec;
+  box-shadow: 0 0 8px 0 rgba(0, 0, 0, 0.15);
+
+  @apply flex fixed items-center bg-white z-30 w-screen;
+}
+
+.f-layout-menu.show {
+  @apply block max-w-none w-screen fixed left-0 right-0;
+  /* height: calc(100vh); */
+  height: calc(100vh - 82px);
+  min-height: calc(100vh - 82px);
+  /* min-height: 100%; */
+  @apply z-50;
+
+  @screen md {
+    @apply block relative;
+    @apply w-full max-w-xs;
+  }
+}
+
+.f-layout-menu {
+  @apply w-full bg-white min-h-screen overflow-y-scroll;
+  @apply hidden;
+
+  @screen md {
+    @apply block;
+    @apply w-full max-w-xs;
+  }
+
+  border-right: solid 1px #ececec;
+}
+
+.f-burger {
+  @apply mx-3 block;
+  @screen md {
+    @apply hidden;
+  }
+}
+.f-burger, .f-burger img {
+  @apply w-6 h-6 text-center object-contain block;
+  @screen md {
+    @apply hidden
+  }
+}
+
+.f-layout-body {
+  @apply flex-1 min-h-screen;
+}
+
+.f-narrow-container {
+  margin: 0 auto 1rem;
+  @screen sm {
+    @apply w-4/6;
+  }
+}

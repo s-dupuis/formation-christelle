@@ -1,0 +1,3 @@
+.f-iban-cell, .f-iban-cell-error {
+  @apply text-center;
+}

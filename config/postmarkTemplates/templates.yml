@@ -1,0 +1,71 @@
+templates:
+  - Name: onApporteurActivateAccount
+    EmailId: onApporteurActivateAccount-v1
+    Subject: Finalisez la création de votre compte pour accéder aux outils COM_TAILWIND
+
+  - Name: onApporteurActivateAccountDone
+    EmailId: onApporteurActivateAccountDone-v1
+    Subject: Félicitations votre compte COM_TAILWIND est ouvert | A conserver
+
+  - Name: onSendMessage
+    EmailId: onSendMessage-v1
+    Subject: '{{subject}}'
+  - Name: onDeclarePortabilite
+    EmailId: onDeclarePortabilite-v1
+    Subject: 'Déclarer un affilié en portabilité'
+
+  - Name: onDeclarationDeDeces
+    Subject: '{{subject}} - Raison sociale - Nom partenaire'
+    EmailId: onDeclarationDeDeces-v1
+
+  - Name: onDeclarationArretTravail
+    Subject: '{{subject}} - Raison sociale - Nom partenaire'
+    EmailId: onDeclarationArretTravail-v1
+
+  - Name: onDeclarationMiseInvalidite
+    Subject: '{{subject}} - Raison sociale - Nom partenaire'
+    EmailId: onDeclarationMiseInvalidite-v1
+
+  - Name: onDemandeInformation
+    Subject: '{{subject}} - Raison sociale - Nom partenaire'
+    EmailId: onDemandeInformation-v1
+
+  - Name: onAutre
+    Subject: '{{subject}} - Raison sociale - Nom partenaire'
+    EmailId: onAutre-v1
+
+  - Name: onReclamationPrestation
+    Subject: '{{subject}} - Raison sociale - Nom partenaire'
+    EmailId: onReclamationPrestation-v1
+
+  - Name: onReclamationAdhesionCotisation
+    Subject: 'Réclamation adhésion/cotisation'
+    EmailId: onReclamationAdhesionCotisation-v1
+
+  - Name: onDemandeInformationSouscription
+    Subject: 'Demande d’information'
+    EmailId: onDemandeInformationSouscription-v1
+
+  - Name: onDemandeCopieContrat
+    Subject: 'Demande de copie de contrat'
+    EmailId: onDemandeCopieContrat-v1
+
+  - Name: onChangementAdresse
+    Subject: 'Changement d’adresse'
+    EmailId: onChangementAdresse-v1
+
+  - Name: onModifCoordonnesBancaires
+    Subject: 'Modification des coordonnées bancaires'
+    EmailId: onModifCoordonnesBancaires-v1
+
+  - Name: onDemandeAttestationMademin
+    Subject: 'Demande d’attestation Madelin'
+    EmailId: onDemandeAttestationMademin-v1
+
+  - Name: onProcedureResiliationContrat
+    Subject: 'Procédure de résiliation de contrat'
+    EmailId: onProcedureResiliationContrat-v1
+
+  - Name: onAutreSouscription
+    Subject: 'autre'
+    EmailId: onAutreSouscription-v1

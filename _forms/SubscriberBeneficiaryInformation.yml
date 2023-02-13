@@ -1,0 +1,43 @@
+fields:
+  - subscriberId:
+      type: String
+      input: hidden
+  - externalId:
+      type: String
+      input: hidden
+      required: true
+  - beneficiaryType:
+      type: BeneficiaryEnum
+      input: select
+      source: beneficiaries
+      label: "Type de bénéficiaire *"
+      required: true
+  - civility:
+      type: CivilityEnum
+      input: select
+      source: civilities
+      label: "Civilité *"
+      required: true
+  - firstName:
+      type: String
+      input: text
+      label: "Prénom *"
+      required: true
+  - lastName:
+      type: String
+      input: text
+      label: "Nom *"
+      required: true
+  - birthDate:
+      type: String
+      input: birthdate
+      label: "Date de naissance *"
+      required: true
+  - nic:
+      type: String
+      input: nic
+      label: "Numéro de sécurité sociale (optionnel)"
+resolver:
+  name: ContractResolver
+  method: updateSubscriberBeneficiaryInformation
+response:

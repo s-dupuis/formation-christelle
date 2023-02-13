@@ -1,0 +1,127 @@
+:root {
+  --offer-padding: 1rem;
+  --offer-margin: 1rem;
+}
+
+.f-offer {
+  @apply flex flex-col items-center justify-between;
+  border-radius: 9px;
+  width: 213px;
+  overflow: hidden;
+  padding: var(--offer-padding);
+  margin: 0;
+  box-shadow: 0px -10px 20px 5px rgb(0 0 0 / 10%);
+  @screen md {
+    box-shadow: 0px 0px 50px 20px rgb(0 0 0 / 10%);
+    margin: var(--offer-margin) 0;
+  }
+}
+
+.f-offer-2 {
+  border-top-right-radius: 9px;
+  border-bottom-right-radius: 9px;
+}
+
+.f-offer-1 {
+  border-radius: 9px;;
+}
+
+.f-offer-0 {
+  border-top-left-radius: 9px;
+  border-bottom-left-radius: 9px;
+}
+
+.f-offer-selected {
+  @apply text-white bg-blue;
+  margin: 0;
+  padding: calc(var(--offer-padding) + var(--offer-margin)) var(--offer-padding);
+}
+
+.f-offer-recap {
+  @apply px-3 pt-3 pb-3.5 w-auto;
+  border-radius: 7px !important;
+  @screen md {
+    width: 260px;
+  }
+}
+.f-offer-recap-box {
+  @apply py-2 mt-3;
+  border-top: 0.354787px dashed #A9A9AA;
+  border-bottom: 0.354787px dashed #A9A9AA;
+}
+.f-offer-choose {
+  @apply flex w-full py-3 items-center justify-center text-pink;
+  background-color: rgba(255, 65, 174, 0.3);
+  border-radius: 56px;
+}
+
+.f-offer-choose-selected {
+  @apply bg-pink text-white;
+}
+
+.f-offer-choose:disabled {
+  opacity: 0.8;
+}
+
+.f-offers-carousel-container {
+  position: relative;
+  width: 100%;
+  overflow: hidden;
+  height: 380px;
+}
+
+.f-offers-carousel {
+  display: flex;
+  position: absolute;
+  width: 100%
+}
+
+.alice-carousel__dots {
+  margin: 0 !important;
+}
+
+.alice-carousel__dots-item {
+background-color:#C2C2D1 !important;;
+}
+
+.alice-carousel__dots-item.__active {
+  background-color: #3F1774 !important;;
+}
+
+/* Preface */
+
+.f-preface-offers {
+  @apply flex flex-col items-center w-auto;
+  @screen md {
+    @apply bg-white;
+    width: 634px;
+    margin: 0 auto;
+    border-radius: 9px;
+  }
+}
+
+.f-preface-offer {
+  @apply flex-1 flex flex-col items-center p-5 m-2 bg-white;
+  border-radius: 10px;
+  box-shadow: 0px 0px 4px 3px rgba(0,0,0,0.14);
+  -webkit-box-shadow: 0px 0px 4px 3px rgba(0,0,0,0.14);
+  -moz-box-shadow: 0px 0px 4px 3px rgba(0,0,0,0.14);
+}
+
+.f-preface-offer-title {
+  @apply font-bold;
+  font-size: 1rem;
+}
+
+.f-preface-offer-text {
+  @apply text-sm text-center;
+}
+
+.f-slider-container {
+  position: relative;
+}
+
+/* Mobile */
+.f-scrolledOffers {
+  padding: 50px 50px 0 50px;
+}

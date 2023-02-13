@@ -1,0 +1,80 @@
+fields:
+  - effectDate:
+      type: String
+      input: effectDate
+      label: "Date d'effet *"
+      required: true
+  - civility:
+      type: CivilityEnum
+      input: select
+      source: civilities
+      label: "Civilité *"
+      required: true
+  - firstName:
+      type: String
+      input: text
+      label: "Prénom *"
+      required: true
+  - lastName:
+      type: String
+      input: text
+      label: "Nom *"
+      required: true
+  - birthDate:
+      type: String
+      input: birthdate
+      label: "Date de naissance *"
+      required: true
+      meta:
+        foo: bar
+  - birthName:
+      type: String
+      input: text
+      label: "Nom de naissance"
+  - nic:
+      type: String
+      input: nic
+      label: "Numéro de sécurité sociale"
+  - address:
+      type: String
+      input: text
+      label: "Adresse postale *"
+      required: true
+  - city:
+      type: String
+      input: text
+      label: "Ville *"
+      required: true
+  - zipCode:
+      type: String
+      input: text
+      label: "Code postal *"
+      required: true
+  - email:
+      type: String
+      input: email
+      label: "Email *"
+      required: true
+  - phone:
+      type: String
+      input: text
+      label: "Téléphone *"
+      required: true
+  - subscriberId:
+      type: String
+      input: hidden
+      visible: false
+  - externalId:
+      type: String
+      input: hidden
+      required: true
+      visible: false
+  - isBeneficiary:
+      type: String
+      input: hidden
+      required: false
+      visible: false
+resolver:
+  name: ContractResolver
+  method: updateSubscriberInformation
+response:

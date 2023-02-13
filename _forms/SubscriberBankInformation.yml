@@ -1,0 +1,19 @@
+fields:
+  - subscriberId:
+      type: String
+      input: hidden
+  - iban:
+      type: String
+      input: iban
+      label: "Saisir l'IBAN *"
+      placeholder: "Saisir l'IBAN *"
+      required: true
+  - file:
+      type: FileInput
+      input: file
+      label: "Télécharger votre RIB *"
+      required: true
+resolver:
+  name: ContractResolver
+  method: updateSubscriberBankInformation
+response:

@@ -1,0 +1,245 @@
+type Beneficiaries {
+  beneficiaries: [ContractBeneficiary]
+  id: ID
+  numberOfBeneficiaries: Int
+  subscriber: ContractSubscriber
+}
+
+input BeneficiariesInput {
+  beneficiaries: [ContractBeneficiaryInput]
+  externalId: String
+  subscriber: ContractSubscriberInput
+}
+
+enum BeneficiaryEnum {
+  A
+  C
+  E
+  K
+  L
+  S
+  T
+  U
+}
+
+enum CivilityEnum {
+  M
+  MME
+}
+
+type Contract {
+  beneficiaries: [ContractBeneficiary]
+  effectDate: String
+  externalId: ID
+  numberOfBeneficiaries: Int
+  payments: Payments
+  subscriber: ContractSubscriber
+}
+
+type ContractBeneficiary {
+  beneficiaryType: String
+  birthDate: String
+  civility: CivilityEnum
+  externalId: String
+  firstName: String
+  fullName: String
+  lastName: String
+  nic: String
+}
+
+input ContractBeneficiaryInput {
+  beneficiaryType: String
+  birthDate: String
+  civility: CivilityEnum
+  externalId: String
+  firstName: String
+  fullName: String
+  id: ID
+  lastName: String
+  nic: String
+}
+
+input ContractInput {
+  beneficiaries: [ContractBeneficiaryInput]
+  effectDate: String
+  externalId: ID
+  numberOfBeneficiaries: Int
+  subscriber: ContractSubscriberInput
+}
+
+type ContractSubscriber {
+  address: String
+  birthDate: String
+  birthName: String
+  city: String
+  civility: CivilityEnum
+  email: String
+  externalId: String
+  firstName: String
+  fullName: String
+  isBeneficiary: Boolean
+  lastName: String
+  nic: String
+  phone: String
+  zipCode: String
+}
+
+input ContractSubscriberInput {
+  address: String
+  birthDate: String
+  birthName: String
+  city: String
+  civility: CivilityEnum
+  email: String
+  externalId: String
+  firstName: String
+  fullName: String
+  id: ID
+  isBeneficiary: Boolean
+  lastName: String
+  nic: String
+  phone: String
+  zipCode: String
+}
+
+input CreateSignatureInput {
+  subscriberId: String
+}
+
+type CreateSignatureMutationResponse implements MutationResponse {
+  error: String
+  ok: Boolean!
+  signerId: String
+}
+
+type DefaultMutationResponse implements MutationResponse {
+  error: String
+  ok: Boolean!
+}
+
+input FileInput {
+  fileName: String!
+  uploadId: ID!
+}
+
+enum GenderEnum {
+  F
+  M
+}
+
+type Mutation {
+  CreateSignature(input: CreateSignatureInput!): CreateSignatureMutationResponse
+  SubscriberBankInformation(input: SubscriberBankInformationInput!): SubscriberBankInformationMutationResponse
+  SubscriberBeneficiaryInformation(input: SubscriberBeneficiaryInformationInput!): SubscriberBeneficiaryInformationMutationResponse
+  SubscriberInformation(input: SubscriberInformationInput!): SubscriberInformationMutationResponse
+  SubscriberOffer(input: SubscriberOfferInput!): SubscriberOfferMutationResponse
+  initializeBeneficiaries(beneficiaries: BeneficiariesInput!): DefaultMutationResponse
+  onSigned(subscriberId: String!): DefaultMutationResponse
+  subscriberSurveyAnswers(question1: String!, question2: String!, subscriberId: String!): DefaultMutationResponse
+}
+
+interface MutationResponse {
+  error: String
+  ok: Boolean!
+}
+
+type Pagination {
+  limit: Int!
+  page: Int!
+  pages: Int!
+  total: Int!
+}
+
+type Payments {
+  iban: String
+  ribFilename: String
+  ribUploadId: String
+}
+
+type Query {
+  contract(subscriberId: ID!): Contract
+  getBeneficiaries(subscriberId: ID!): Beneficiaries
+}
+
+type ResumeStatus {
+  allServicesAvailables: Boolean
+  details: [ResumeStatusDetails]
+}
+
+type ResumeStatusDetails {
+  ok: Boolean
+  reports: [String]
+  service: String
+}
+
+type ServicesStatus {
+  error: String
+  ok: Boolean
+  resume: ResumeStatus
+}
+
+input SubscriberBankInformationInput {
+  file: FileInput!
+  iban: String!
+  subscriberId: String
+}
+
+type SubscriberBankInformationMutationResponse implements MutationResponse {
+  error: String
+  ok: Boolean!
+}
+
+input SubscriberBeneficiaryInformationInput {
+  beneficiaryType: BeneficiaryEnum!
+  birthDate: String!
+  civility: CivilityEnum!
+  externalId: String!
+  firstName: String!
+  lastName: String!
+  nic: String
+  subscriberId: String
+}
+
+type SubscriberBeneficiaryInformationMutationResponse implements MutationResponse {
+  error: String
+  ok: Boolean!
+}
+
+input SubscriberInformationInput {
+  address: String!
+  birthDate: String!
+  birthName: String
+  city: String!
+  civility: CivilityEnum!
+  effectDate: String!
+  email: String!
+  externalId: String!
+  firstName: String!
+  isBeneficiary: String
+  lastName: String!
+  nic: String
+  phone: String!
+  subscriberId: String
+  zipCode: String!
+}
+
+type SubscriberInformationMutationResponse implements MutationResponse {
+  error: String
+  ok: Boolean!
+}
+
+input SubscriberOfferInput {
+  offerId: ID!
+  subscriberId: String
+}
+
+type SubscriberOfferMutationResponse implements MutationResponse {
+  error: String
+  ok: Boolean!
+}
+
+enum UserSessionRoleEnum {
+  ADMIN
+  APPORTEUR
+  TIERS
+}

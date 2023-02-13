@@ -1,0 +1,27 @@
+version: '3'
+services:
+
+  com_tailwind:
+    image: fasstech/com-tailwind
+    build:
+      context: .
+      args:
+        - NPM_TOKEN=${NPM_TOKEN}
+    ports:
+      - 9000:3000
+    environment:
+      API_KEYS: localhost:9000 com_tailwind 076EDD2C-2328-4F7A-9BB4-E01FC24B3FF6
+      JWT_SECRET: BD4415ED-2973-4364-99CF-8E55A17D82F2
+      MONGO_DB_URL: mongodb://host.docker.internal:27017/com
+      ROOT_DIR: /service
+      PORT: 3000
+      NODE_ENV: development
+      SESSION_SECRET: 94A13D29-98BF-43E5-8982-4018F2C0398C
+      SERVICE_URL: http://host.docker.internal:9000
+      ENV: DEVELOPMENT
+      PUBLIC_URL: http://localhost:9000
+      PLAYGROUND_ALLOWED: true
+      SECURED_GRAPHQL: true
+#    volumes:
+#      - ./server:/service/server
+#    command: yarn server:dev

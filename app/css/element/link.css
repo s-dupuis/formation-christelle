@@ -1,0 +1,7 @@
+.f-link {
+  @apply font-bold text-base;
+}
+
+.f-primary-link {
+  @apply underline font-semibold cursor-pointer
+}

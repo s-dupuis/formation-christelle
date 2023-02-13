@@ -1,0 +1,12 @@
+fields:
+  - offerId:
+      type: ID
+      input: hidden
+      required: true
+  - subscriberId:
+      type: String
+      input: hidden
+resolver:
+  name: ContractResolver
+  method: updateSubscriberOffer
+response:

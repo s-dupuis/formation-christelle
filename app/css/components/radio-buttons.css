@@ -1,0 +1,28 @@
+.f-radio-buttons {
+  @apply flex text-purple font-bold justify-center;
+}
+
+.f-radio-buttons-item {
+  @apply flex items-center justify-center text-purple p-2 border-purple text-xs;
+  cursor: pointer;
+  flex: 1 1 0;
+  border-width: 2px;
+  border-right-width: 0px;
+  height: 3rem;
+  user-select: none;
+}
+
+.f-radio-buttons-item:first-of-type {
+  border-top-left-radius: 9px;
+  border-bottom-left-radius: 9px;
+}
+
+.f-radio-buttons-item:last-of-type {
+  border-right-width: 2px;
+  border-top-right-radius: 9px;
+  border-bottom-right-radius: 9px;
+}
+
+.f-radio-buttons-item-selected {
+  background-color: #A188C2;
+}

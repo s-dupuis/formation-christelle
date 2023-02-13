@@ -1,0 +1,19 @@
+.f-thanks-container {
+    @apply text-center w-auto md:w-1/2 mx-auto;
+}
+
+.f-thanks-img {
+    @apply mx-auto;
+    max-width: 161px;
+    @screen md {
+        max-width: 218px;
+    }
+}
+
+.f-thanks-text {
+    @apply font-bold text-3xl md:text-4xl mt-4 leading-10 mx-0 md:mx-4;
+}
+
+.f-thanks-subtext {
+    @apply text-base md:text-xl mt-5 md:mt-2;
+}

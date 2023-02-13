@@ -1,0 +1,8 @@
+.f-badge {
+  /* position: relative; */
+  height: 24px;
+  top: -0.25rem;
+
+  @apply mx-3 px-2 w-auto relative;
+  @apply rounded-full text-base font-medium;
+}

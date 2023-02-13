@@ -1,0 +1,68 @@
+.f-modal-overlay {
+  @apply fixed top-0 left-0 w-full h-full flex justify-center items-start py-2 px-4 overflow-y-auto invisible -z-10;
+  background: rgba(0, 0, 0, 0.7);
+  @screen md {
+    @apply items-center py-4
+  }
+  }
+
+.f-show-modal {
+  @apply visible z-10;
+}
+
+.f-modal-container-default {
+  @apply relative flex flex-col justify-start items-center bg-white pt-0 pb-10 rounded-2xl overflow-hidden text-center;
+  box-shadow: 0 0 25px rgb(0 0 0 / 15%);
+}
+
+.f-modal-container {
+  @apply f-modal-container-default rounded-3xl;
+  min-width: 250px;
+  max-width: 375px;
+}
+
+.f-close-modal-btn {
+  @apply absolute text-4xl top-4 right-4 cursor-pointer;
+}
+
+.f-modal-img {
+  @apply w-auto;
+  min-height: 12rem
+}
+
+.f-modal-title {
+  @apply leading-tight font-bold;
+  font-size: 1.8rem;
+  @screen xs {
+    font-size: 2.1rem;
+  }
+  @screen md {
+    font-size: 2.5rem;
+  }
+}
+
+.f-modal-btn {
+  min-height: 48px;
+}
+
+/* multiple content */
+
+.f-modal-container-multiple-content {
+  @apply f-modal-container-default;
+  width: min-content;
+  border-radius: 9px;
+  @screen md {
+    padding: 2rem;
+    width: auto;
+  }
+}
+
+.f-modal-multiple-content {
+  @apply flex flex-row divide-x;
+  max-width: 1247px;
+}
+
+.f-modal-multiple-content-img {
+  @apply h-80;
+  margin: 0 auto;
+}

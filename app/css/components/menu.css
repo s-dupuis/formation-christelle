@@ -1,0 +1,42 @@
+.f-menu {
+  width: 100%;
+}
+
+.f-menu li {
+  @apply flex items-center uppercase font-bold text-sm;
+  border-radius: 4px;
+  height: 63px;
+  padding-left: 16px;
+  cursor: pointer;
+  border-left-width: 4px;
+}
+
+.f-menu li.profil-menu {
+  @apply w-full border-t-2 border-gray-200 mt-2 items-center;
+  border-radius: 0;
+  border-left-width: 0;
+  @screen md {
+    @apply hidden;
+  }
+}
+
+.f-menu li.f-menu-item-selected-text {
+
+}
+.f-menu li.f-menu-item-selected {
+
+}
+
+.f-menu li.f-menu-item-selected img {
+
+}
+
+.f-menu > li:hover {
+
+}
+
+.f-menu li img, .f-menu li div img {
+
+  margin-right: 8px;
+}
+

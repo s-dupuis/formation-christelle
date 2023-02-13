@@ -1,0 +1,11 @@
+fields:
+  - subscriberId:
+      type: String
+      hidden: true
+      visible: false
+resolver:
+  name: ContractResolver
+  method: createSignature
+response:
+  - signerId:
+      type: String

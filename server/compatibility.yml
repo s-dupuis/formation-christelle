@@ -1,0 +1,11 @@
+browser:
+  - name: chrome
+    version: 76 # Last 10 versions
+  - name: firefox
+    version: 72 # Last 10 versions
+  - name: safari
+    version: 12 # Last 2 versions
+  - name: mobile safari
+    version: 12 # Last 2 versions
+  - name: opera
+    version: 50 # Last 10 versions

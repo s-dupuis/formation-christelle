@@ -1,0 +1,10 @@
+required:
+  ROOT_DIR: chemin vers la racine du projet
+  NODE_ENV: type d'environnement
+  SESSION_SECRET: secret de la session
+  MONGO_DB_URL: url de la base mongodb
+  JWT_SECRET: json web token
+  PUBLIC_URL: url publique du service
+  SECURED_GRAPHQL: active la sécurité sur la partie graphql
+optional:
+  PLAYGROUND_ALLOWED: activation du playground graphql (uniquement en NODE_ENV development et false par défaut)

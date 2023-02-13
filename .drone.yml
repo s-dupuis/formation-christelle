@@ -1,0 +1,80 @@
+kind: pipeline
+name: default
+
+workspace:
+  base: /service
+
+steps:
+  - name: build
+    image: node:lts-alpine
+    commands:
+      - echo "//registry.npmjs.org/:_authToken=$${NPM_TOKEN}" >> .npmrc
+      - yarn install
+      - rm .npmrc
+    environment:
+      NPM_TOKEN: ${NPM_TOKEN}
+
+  - name: build-image
+    image: plugins/docker
+    environment:
+      NPM_TOKEN: ${NPM_TOKEN}
+    settings:
+      username: ${DOCKER_USERNAME}
+      password: ${DOCKER_PASSWORD}
+      repo: fasstech/com-tailwind
+      auto_tag: true
+      build_args:
+        - BUILD_VERSION=${DRONE_TAG}
+      build_args_from_env:
+        - NPM_TOKEN
+    when:
+      branch:
+        - master
+
+  - name: build-image-fix-branch
+    image: plugins/docker
+    environment:
+      NPM_TOKEN: ${NPM_TOKEN}
+    settings:
+      username: ${DOCKER_USERNAME}
+      password: ${DOCKER_PASSWORD}
+      repo: fasstech/com-tailwind
+      auto_tag: false
+      tags:
+        - ${DRONE_COMMIT_BRANCH/\//-}
+      build_args:
+        - BUILD_VERSION=${DRONE_TAG}
+      build_args_from_env:
+        - NPM_TOKEN
+    when:
+      branch:
+        - fix/*
+
+  - name: slack
+    image: plugins/slack
+    settings:
+      webhook: ${SLACK_WEBHOOK}
+      channel: drone_ci
+      link_names: true
+      template: >
+        {{#success build.status}}
+          [ *{{ uppercasefirst build.status }}* : *{{repo.name}}* ] : build {{build.number}} succeeded. Good job. <@{{build.author}}>
+          Author: {{ build.author }}
+          Drone Build: <{{ build.link }}|#{{ build.number }}>
+          Commit Link: <https://github.com/{{repo.owner}}/{{repo.name}}/commit/{{build.commit}}|{{ truncate build.commit 10 }}>
+        {{else}}
+          [ *{{ uppercasefirst build.status }}* : *{{repo.name}}* ] : build {{build.number}} failed. Fix me please. <@{{build.author}}>
+          Author: {{ build.author }}
+          Drone Build: <{{ build.link }}|#{{ build.number }}>
+          Commit Link: <https://github.com/{{repo.owner}}/{{repo.name}}/commit/{{build.commit}}|{{ truncate build.commit 10 }}>
+        {{/success}}
+    when:
+      status: [ success, failure ]
+
+trigger:
+  branch:
+    - master
+    - fix/*
+  event:
+    - push
+    - tag

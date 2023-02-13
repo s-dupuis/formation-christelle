@@ -1,0 +1,14 @@
+.f-company {
+  @apply grid grid-cols-2 gap-0 p-3;
+  border-radius: 4px;
+  background-color: #f5f5f5;
+  border-left: 12px solid #f5f5f5;
+}
+
+.f-company-logo {
+  @apply flex justify-items-start items-center;
+}
+
+.f-company-title {
+  @apply uppercase text-lg;
+}

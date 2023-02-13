@@ -1,0 +1,147 @@
+.f-progress-bar-container{
+  position: relative;
+  width: 100vw;
+  overflow: hidden;
+  height: 50px;
+  margin-top: 2rem;
+  @screen md {
+    margin-top: 0;
+    height: auto;
+    width: auto;
+  }
+}
+
+.f-progress-bar {
+  @apply w-full flex;
+  position: absolute;
+  left: 2rem;
+  width: 826px;
+  @screen md {
+    height: 60px;
+    left: 0;
+    min-width: 826px;
+    position: relative;
+  }
+}
+
+.f-progress-bar-item-wrapper {
+  @apply flex flex-1;
+  position: relative;
+  @screen md {
+    left: auto;
+    position: relative;
+  }
+}
+
+.f-item-side-0 {
+  border-top-left-radius: 8px;
+  border-bottom-left-radius: 8px;
+}
+
+.f-item-side-3 {
+  border-top-right-radius: 8px;
+  border-bottom-right-radius: 8px;
+}
+
+.f-progress-bar-item {
+  @apply bg-white flex-1 flex items-center p-2 text-dark50p uppercase text-xs font-bold pl-8;
+  background-color: rgba(255, 255, 255, 0.5);
+}
+
+.f-progress-bar-item-selected {
+  @apply bg-white text-dark !important;
+}
+
+
+.f-progress-bar-item-index-container {
+  @apply flex items-center justify-center bg-dark50p;
+  width: 1.25rem;
+  height: 1.25rem;
+  border-radius: 12px;
+  color: rgb(242, 242, 242);
+}
+
+.f-progress-bar-item-index-container-selected {
+  @apply bg-dark text-white;
+}
+
+.f-progress-bar-item-arrow-wrapper {
+  background-color: rgba(242, 242, 242, 1);
+  position: relative;
+  height: 48px;
+  @screen md {
+    height: 60px;
+  }
+  width: 30px;
+  overflow: hidden;
+}
+
+.f-progress-bar-item-arrow-top {
+  position: absolute;
+  background-color:#E5E5E5;
+  transform-origin: top right;
+  transform: rotate(50deg);
+  top: 24px;
+  left: -44px;
+  width: 70px;
+  height: 4px;
+  @screen md {
+    top: 38px;
+    left: -31px;
+    width: 70px;
+    height: 4px;
+  }
+}
+
+.f-progress-bar-item-arrow-top-2 {
+  background-color: rgba(242, 242, 242, 1);
+  position: absolute;
+  transform-origin: top right;
+  transform: rotate(50deg);
+  top: 38px;
+  left: -7px;
+  width: 70px;
+  height: 20px;
+  @screen md {
+    top: 38px;
+    left: -6px;
+    width: 70px;
+    height: 20px;
+  }
+
+}
+
+.f-progress-bar-item-arrow-bottom {
+  position: absolute;
+  top: 23px;
+  left: -48px;
+  width: 70px;
+  height: 4px;
+  @screen md {
+    top: 16px;
+    left: -31px;
+    width: 70px;
+    height: 4px;
+  }
+  background-color:#E5E5E5;
+  transform-origin: top right;
+  transform: rotate(-50deg);
+}
+
+.f-progress-bar-item-arrow-bottom-2 {
+  background-color: rgba(242, 242, 242, 1);
+  position: absolute;
+  top: 16px;
+  left: -37px;
+  width: 70px;
+  height: 20px;
+  @screen md {
+    top: 16px;
+    left: -26px;
+    width: 70px;
+    height: 20px;
+  }
+
+  transform-origin: top right;
+  transform: rotate(-50deg);
+}

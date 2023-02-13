@@ -1,0 +1,60 @@
+.f-beneficiaries {
+  @apply flex items-center justify-between border-purple border-2 px-4 text-lg;
+  width: 300px;
+  height: 40px;
+  border-radius: 20px;
+}
+
+.dropdown-caret {
+  transition: all .25s ease-in-out;
+}
+
+.f-beneficiaries .dropdown-caret {
+  transform: rotate(180deg)
+}
+
+.rc-dropdown-open .dropdown-caret {
+  transform: rotate(0deg)
+}
+
+.f-beneficiaries-dropdown {
+  @apply font-normal py-4 px-2 text-lg;
+  background: rgba(242, 242, 242, 0.8);
+}
+.f-beneficiaries-selection {
+  @apply flex items-center justify-center flex-col;
+}
+
+.f-beneficiary-wrapper {
+  @apply flex items-center w-full mb-5 text-xs text-left;
+  opacity: 0.5;
+  transition: all .25s ease-in-out;
+  @screen md {
+    @apply text-xl;
+  }
+  @screen xs {
+    @apply text-base;
+  }
+}
+
+.f-beneficiary-selected {
+  opacity: 1;
+}
+
+.f-beneficiary-thumb {
+  @apply flex items-center justify-center text-white text-lg mr-7;
+  min-height: 2.75rem;
+  min-width: 2.75rem;
+  border-radius: 50%;
+  @screen md {
+    @apply mr-16;
+  }
+}
+
+.f-beneficiary-name {
+  @apply overflow-ellipsis whitespace-nowrap overflow-hidden;
+}
+
+.f-beneficiary-check {
+  margin-left: auto;
+}

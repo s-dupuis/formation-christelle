@@ -1,0 +1,24 @@
+div.popover {
+  @apply absolute overflow-visible text-white p-3;
+
+  -webkit-border-radius: 5px;
+  -moz-border-radius: 5px;
+  border-radius: 5px;
+  width: 190px;
+  /* margin: 30px; */
+  margin-bottom: 8px;
+}
+
+/* #4f121c */
+
+div.popover:before {
+  content: ' ';
+  height: 0;
+  position: absolute;
+  width: 0;
+  left: calc(50% - 8px);
+  right: calc(50%);
+  bottom: -18px;
+  border: 10px solid transparent;
+  border-top-color: #4f121c;
+}

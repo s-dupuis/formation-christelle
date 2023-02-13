@@ -1,0 +1,4 @@
+.f-top {
+  @apply w-screen flex flex-row justify-between items-center;
+  max-width: 1024px;
+}

@@ -1,0 +1,27 @@
+.f-button, .f-button-purple, .f-button-border-purple {
+  @apply w-full flex items-center justify-center appearance-none rounded py-2 leading-tight h-12 text-base font-semibold text-sm rounded-full text-white mx-auto;
+  max-width: 300px;
+  @screen md {
+    max-width: 320px;
+  }
+  &:disabled {
+    opacity: 0.5;
+  }
+}
+
+.f-button:disabled, .f-button-purple:disabled, .f-button-border-purple:disabled {
+  opacity: 0.5;
+}
+
+.f-button-purple {
+  @apply bg-purple;
+}
+
+.f-button-border-purple {
+  @apply bg-transparent border-2 border-purple text-purple;
+}
+
+.f-back-button {
+  cursor: pointer;
+  align-self: flex-start;
+}
