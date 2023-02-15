@@ -44,7 +44,7 @@ const ItemMockCtrl = (() => {
   };
 
   const update = (id, updates) => {
-    if ((updates.name && R.is(String, updates.name)) && (updates.category && validateCategory(updates.category)) && (updates.group && R.is(String, updates.group))) {
+    if ((updates.name && R.is(String, updates.name)) || (updates.category && validateCategory(updates.category)) || (updates.group && R.is(String, updates.group))) {
       const index = R.findIndex(R.propEq('id', id), items);
       if (index === -1) {
         return null;

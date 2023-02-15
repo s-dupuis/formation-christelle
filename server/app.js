@@ -71,7 +71,7 @@ app.use(require('./lib/middlewares/user'));
     console.log('Elément trouvé :', foundItem);
 
     // Mettre à jour un élément
-    const updates = { category: 'D' };
+    const updates = { category: 'B' };
     const updatedItem = ItemMockCtrl.update(foundItem.id, updates);
     console.log('Elément mis à jour :', updatedItem);
 
