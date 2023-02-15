@@ -9,8 +9,8 @@ var indexRouter = require('./routes/index');
 var cors = require('cors');
 var app = express();
 const urlParse = require('url-parse');
-
 var externalHosts;
+const ItemMockCtrl = require('./controllers/ItemMockCtrl');
 
 (async () => {
   externalHosts = await require('./lib/models/ApiKeys').getExternalHosts();
@@ -60,7 +60,29 @@ app.use(cors({
 }));
 
 app.use(require('./lib/middlewares/user'));
+(async () => {
+// Créer un nouvel élément
+  const newItem = await ItemMockCtrl.create({ name: 'test', category: 'A', group: 'group', createdAt: '2023-02-14', updatedAt: '2023-02-14' });
+  console.log('Nouvel élément créé :', newItem);
 
+  // Récupérer un élément par son identifiant
+  const itemId = newItem.id;
+  const foundItem = await ItemMockCtrl.getById(itemId);
+  console.log('Elément trouvé :', foundItem);
+
+  // Mettre à jour un élément
+  const updates = { category: 'B' };
+  const updatedItem = await ItemMockCtrl.update(foundItem.id, updates);
+  console.log('Elément mis à jour :', updatedItem);
+
+  // Récupérer une liste d'éléments
+  const allItems = await ItemMockCtrl.list();
+  console.log('Tous les éléments :', allItems);
+
+  // Supprimer un élément
+  const removedItem = await ItemMockCtrl.remove(itemId);
+  console.log('Elément supprimé :', removedItem);
+})();
 const setRoutes = () => {
   app.use('/', indexRouter);
 };
