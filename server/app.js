@@ -62,7 +62,7 @@ app.use(cors({
 app.use(require('./lib/middlewares/user'));
 (() => {
 // Créer un nouvel élément
-  const newItem = ItemMockCtrl.create({ name: 'test', category: 'A', group: 'group' });
+  const newItem = ItemMockCtrl.create({ name: 'test2', category: 'A', group: 'group' });
   if (newItem) {
     console.log('Nouvel élément créé :', newItem);
     // Récupérer un élément par son identifiant

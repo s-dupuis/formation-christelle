@@ -3,19 +3,16 @@ const R = require('ramda');
 const ItemMockCtrl = (() => {
   const categories = ['A', 'B', 'C', 'D'];
   const validateCategoryOrNil = (value) => {
-    if (R.or(R.isNil(value), R.includes(value, categories))) {
-      return true;
-    }
-    return false;
+    return R.or(R.isNil(value), R.includes(value, categories));
   };
 
   const validateStringOrNil = (value) => {
-    console.log('VALUE : ' + value);
-    if (R.or(R.isNil(value), R.is(String, value))) {
-      return true;
-    }
-    return false;
+    return R.or(R.isNil(value), R.is(String, value));
   };
+  const findName = (name1, arr) => R.compose(
+    (value) => value.includes(name1),
+    R.pluck('name')
+  )(arr);
 
   const dataValidationSpec = {
     name: validateStringOrNil,
@@ -31,9 +28,9 @@ const ItemMockCtrl = (() => {
     return maxId + 1;
   };
 
-  let items = [{ id: 2, name: 'testC', category: 'C', group: 'group' }];
+  let items = [{ id: 2, name: 'test', category: 'C', group: 'group' }];
   const create = (item) => {
-    if (isValidData(item)) {
+    if (isValidData(item) && !findName(item.name, items)) {
       const id = getNextId(items);
       let newItem = {};
       items = R.compose(
@@ -72,8 +69,7 @@ const ItemMockCtrl = (() => {
         R.assoc('updatedAt', new Date().toISOString()),
         R.mergeLeft(updates)
       )(items[index]);
-      items = R.update(index, updatedItem, items);
-      return updatedItem;
+      return R.adjust(index, R.always(updatedItem), items);
     } else {
       throw new Error('Update fields are not valid');
     }
