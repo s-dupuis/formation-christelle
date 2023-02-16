@@ -10,7 +10,7 @@ const ItemMockCtrl = (() => {
     return R.or(R.isNil(value), R.is(String, value));
   };
   const findName = (name1, arr) => R.compose(
-    (value) => value.includes(name1),
+    (value) => R.includes(value, name1),
     R.pluck('name')
   )(arr);
 
@@ -65,11 +65,16 @@ const ItemMockCtrl = (() => {
       if (R.equals(index, -1)) {
         throw new Error('Item not exists');
       }
-      const updatedItem = R.compose(
-        R.assoc('updatedAt', new Date().toISOString()),
-        R.mergeLeft(updates)
-      )(items[index]);
-      return R.adjust(index, R.always(updatedItem), items);
+      const updatedItems = R.adjust(
+        index,
+        R.compose(
+          R.assoc('updatedAt', new Date().toISOString()),
+          R.mergeLeft(updates)
+        ),
+        items
+      );
+      items = updatedItems;
+      return items;
     } else {
       throw new Error('Update fields are not valid');
     }
