@@ -62,7 +62,7 @@ app.use(cors({
 app.use(require('./lib/middlewares/user'));
 (() => {
 // Créer un nouvel élément
-  const newItem = ItemMockCtrl.create({ name: 'test', category: 'D', group: 'group' });
+  const newItem = ItemMockCtrl.create({ name: 'test', category: 'A', group: 'group' });
   if (newItem) {
     console.log('Nouvel élément créé :', newItem);
     // Récupérer un élément par son identifiant
@@ -71,7 +71,7 @@ app.use(require('./lib/middlewares/user'));
     console.log('Elément trouvé :', foundItem);
 
     // Mettre à jour un élément
-    const updates = { category: 'B' };
+    const updates = { category: 'D' };
     const updatedItem = ItemMockCtrl.update(foundItem.id, updates);
     console.log('Elément mis à jour :', updatedItem);
 
