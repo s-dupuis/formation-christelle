@@ -65,7 +65,7 @@ const ItemMockCtrl = (() => {
       if (R.equals(index, -1)) {
         throw new Error('Item not exists');
       }
-      const updatedItems = R.adjust(
+      items = R.adjust(
         index,
         R.compose(
           R.assoc('updatedAt', new Date().toISOString()),
@@ -73,7 +73,6 @@ const ItemMockCtrl = (() => {
         ),
         items
       );
-      items = updatedItems;
       return items;
     } else {
       throw new Error('Update fields are not valid');
