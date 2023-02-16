@@ -10,7 +10,7 @@ const ItemMockCtrl = (() => {
     return R.or(R.isNil(value), R.is(String, value));
   };
   const findName = (name1, arr) => R.compose(
-    (value) => R.includes(value, name1),
+    R.includes(name1),
     R.pluck('name')
   )(arr);
 
