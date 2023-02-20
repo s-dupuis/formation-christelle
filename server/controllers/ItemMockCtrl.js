@@ -23,12 +23,16 @@ const ItemMockCtrl = (() => {
   const isValidData = R.where(dataValidationSpec);
 
   const getNextId = (items) => {
-    const ids = R.pluck('id', items);
-    const maxId = R.apply(Math.max, ids);
-    return maxId + 1;
+    if (R.isEmpty(items)) {
+      return 1;
+    } else {
+      const ids = R.pluck('id', items);
+      const maxId = R.apply(Math.max, ids);
+      return maxId + 1;
+    }
   };
 
-  let items = [{ id: 2, name: 'test', category: 'C', group: 'group' }];
+  let items = [];
   const create = (item) => {
     if (isValidData(item) && !findName(item.name, items)) {
       const id = getNextId(items);
@@ -85,10 +89,13 @@ const ItemMockCtrl = (() => {
 
   return {
     create,
+    findName,
     getById,
+    getNextId,
+    isValidData,
+    list,
     remove,
-    update,
-    list
+    update
   };
 })();
 
