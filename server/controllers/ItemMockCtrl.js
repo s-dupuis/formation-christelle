@@ -23,7 +23,7 @@ const ItemMockCtrl = (() => {
   const isValidData = R.where(dataValidationSpec);
 
   const getNextId = (items) => {
-    if (R.equals(R.length(items), 0)) {
+    if (R.isEmpty(items)) {
       return 1;
     } else {
       const ids = R.pluck('id', items);
