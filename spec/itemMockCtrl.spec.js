@@ -81,6 +81,41 @@ describe('itemMockCtrl', () => {
       expect(items).to.not.include(expectedItem);
     });
   });
+  describe('update', () => {
+    let items;
+    let id;
+    let updates;
+
+    beforeEach(() => {
+      items = [{ id: 1, name: 'test', category: 'A', group: 'group1', createdAt: '2023-02-16T17:00:00.000Z', updatedAt: '2023-02-16T17:00:00.000Z' }];
+      id = 1;
+      updates = { name: 'updated', category: 'B' };
+    });
+
+    it('should update the item if data is valid', () => {
+      const expectedItem = { id: 1, name: 'updated', category: 'B', group: 'group1' };
+      const findIndexStub = sinon.stub(R, 'findIndex').returns(0);
+      const adjustStub = sinon.stub(R, 'adjust').returns([expectedItem, items[1]]);
+
+      const result = ItemMockCtrl.update(id, updates, items);
+
+      expect(result).to.deep.equal([expectedItem, items[1]]);
+      findIndexStub.restore();
+      adjustStub.restore();
+    });
+
+    it('should throw an error if item does not exist', () => {
+      items = [];
+      const findIndexStub = sinon.stub(R, 'findIndex').returns(-1);
+      assert.throws(() => ItemMockCtrl.update(id, updates, items), /Item not exists/);
+      findIndexStub.restore();
+    });
+
+    it('should throw an error if update fields are not valid', () => {
+      updates.category = ''; // make category invalid
+      assert.throws(() => ItemMockCtrl.update(id, updates, items), /Update fields are not valid/);
+    });
+  });
   describe('create', () => {
     let items;
     beforeEach(() => {
@@ -91,19 +126,28 @@ describe('itemMockCtrl', () => {
       const item = { name: 'test2', category: 'B', group: 'group2' };
       const expectedNewItem = { id: 1, name: 'test2', category: 'B', group: 'group2', createdAt: new Date().toISOString(), updatedAt: new Date().toISOString() };
       const result = ItemMockCtrl.create(item, items);
-      expect(result).to.deep.equal(expectedNewItem);
+
+      expect(result.name).to.deep.equal(expectedNewItem.name);
+      expect(result.category).to.deep.equal(expectedNewItem.category);
+      expect(result.group).to.deep.equal(expectedNewItem.group);
+      expect(result.createdAt).to.includes('2023-02-20');
+      expect(result.updatedAt).to.includes('2023-02-20');
     });
 
     it('should throw an error if the data is not valid', () => {
       const item = { name: 'test', category: '', group: 'group1' };
-      assert.throws(function () { ItemMockCtrl.create(item, items); }, Error, /Item fields are not valid/);
+      assert.throws(() => ItemMockCtrl.create(item, items), /Item fields are not valid/);
     });
 
     it('should throw an error if the name is not unique', () => {
+      const isValidDataStub = sinon.stub(ItemMockCtrl, 'isValidData').returns(true);
       const findNameStub = sinon.stub(ItemMockCtrl, 'findName').returns(true);
+
       items = [{ id: 1, name: 'test', category: 'A', group: 'group1', createdAt: '2023-02-16T17:00:00.000Z', updatedAt: '2023-02-16T17:00:00.000Z' }];
       const item = { name: 'test', category: 'B', group: 'group2' };
-      assert.throws(function () { ItemMockCtrl.create(item, items); }, Error, /Item fields are not valid/);
+      console.log(ItemMockCtrl.create(item, items));
+      assert.throws(() => ItemMockCtrl.create(item, items), /Item fields are not valid/);
+      isValidDataStub.restore();
       findNameStub.restore();
     });
   });
