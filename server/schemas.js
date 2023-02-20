@@ -4,6 +4,8 @@ var mongoose = require('mongoose');
 Schemas.userSessions = require('./services/userSession/schema.js');
 mongoose.model('UserSessions', Schemas.userSessions);
 
+Schemas.items = require('./services/items/schema.js');
+mongoose.model('Items', Schemas.items);
 /*
 Schemas.rawOffers = require('./schemas/rawOffers');
 mongoose.model('RawOffers', Schemas.rawOffers);
