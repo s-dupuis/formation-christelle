@@ -26,9 +26,11 @@ const ItemMockCtrl = (() => {
     if (R.isEmpty(items)) {
       return 1;
     } else {
-      const ids = R.pluck('id', items);
-      const maxId = R.apply(Math.max, ids);
-      return maxId + 1;
+      return R.compose(
+        R.inc,
+        R.apply(Math.max),
+        R.pluck('id')
+      )(items);
     }
   };
 
