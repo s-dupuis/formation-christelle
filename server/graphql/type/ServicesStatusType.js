@@ -19,6 +19,10 @@ module.exports = {
       error: String
       resume: ResumeStatus
     }
+    type GetItemByIdStatus {
+        ok: Boolean
+        item: Item
+    }
   `,
   resolvers: {
   }

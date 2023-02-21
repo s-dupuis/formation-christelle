@@ -134,6 +134,11 @@ enum GenderEnum {
   M
 }
 
+type GetItemByIdStatus {
+  item: Item
+  ok: Boolean
+}
+
 type Item {
   category: CategoryEnum
   group: String
@@ -173,7 +178,7 @@ type Payments {
 type Query {
   contract(subscriberId: ID!): Contract
   getBeneficiaries(subscriberId: ID!): Beneficiaries
-  getItemById(itemId: ID!): Item
+  getItemById(itemId: ID!): GetItemByIdStatus
 }
 
 type ResumeStatus {

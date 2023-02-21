@@ -11,7 +11,7 @@ module.exports = {
     type Query {
       contract(subscriberId: ID!): Contract
       getBeneficiaries(subscriberId: ID!): Beneficiaries
-      getItemById(itemId: ID!): Item
+      getItemById(itemId: ID!): GetItemByIdStatus
     }
   `,
   resolvers: {
