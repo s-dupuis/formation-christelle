@@ -9,7 +9,9 @@ const ItemCtrl = (() => {
         item: item
       };
     } else {
-      throw (new Error('Item not exists'));
+      return {
+        ok: false
+      };
     }
   };
 
