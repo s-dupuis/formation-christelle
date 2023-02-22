@@ -1,6 +1,7 @@
 const R = require('ramda');
 const service = require('@fasstech/service');
 const Items = require('./Items');
+
 const auth = token => () => ({
   header: {
     Authorization: `Bearer ${token}`
@@ -27,6 +28,12 @@ const items = (command, args, localServiceAccessToken) => {
         query: [
           'itemId'
         ]
+      },
+      '/items': {
+        route: () => {
+          return Items.get({ query: {} });
+        },
+        method: 'GET'
       }
     })(command, args, auth(localServiceAccessToken));
 };

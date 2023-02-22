@@ -10,13 +10,13 @@
   },
   "license": "ISC",
   "scripts": {
-    "front:dev": "./node_modules/webpack/bin/webpack.js serve --config ./webpack.dev.js --open",
+    "front:dev": "webpack serve --config ./webpack.dev.js --open",
     "front:build": "NODE_ENV=production webpack --config ./webpack.prod.js --progress",
     "server:dev": "nodemon server/bin/www.js",
     "server:prod": "node server/bin/www.js",
     "getSchema": "graphql-inspector introspect http://localhost:7052/graphql -w ./schema.graphql",
     "relay": "relay-compiler",
-    "test": "./node_modules/mocha/bin/mocha **/*.spec.js"
+    "test": "mocha **/*.spec.js"
   },
   "dependencies": {
     "@babel/preset-env": "^7.8.7",

@@ -23,6 +23,10 @@ module.exports = {
         ok: Boolean
         item: Item
     }
+    type ItemsStatus {
+        ok: Boolean
+        items: [Item]
+    }
   `,
   resolvers: {
   }

@@ -18,7 +18,8 @@ const Items = (() => {
   };
 
   const get = async ({ query = {} }) => {
-
+    const handler = await getCollectionHandler();
+    return handler.find();
   };
 
   const getById = async (query) => {

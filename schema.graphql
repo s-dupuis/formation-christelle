@@ -146,6 +146,11 @@ type Item {
   name: String
 }
 
+type ItemsStatus {
+  items: [Item]
+  ok: Boolean
+}
+
 type Mutation {
   CreateSignature(input: CreateSignatureInput!): CreateSignatureMutationResponse
   SubscriberBankInformation(input: SubscriberBankInformationInput!): SubscriberBankInformationMutationResponse
@@ -179,6 +184,7 @@ type Query {
   contract(subscriberId: ID!): Contract
   getBeneficiaries(subscriberId: ID!): Beneficiaries
   getItemById(itemId: ID!): GetItemByIdStatus
+  items: ItemsStatus
 }
 
 type ResumeStatus {
