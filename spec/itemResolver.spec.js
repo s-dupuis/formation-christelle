@@ -6,6 +6,7 @@ const mongoose = require('mongoose');
 const { dbMongo } = require('../server/lib/options/dbMongo');
 const itemSchema = require('../server/schemas').items;
 const Items = mongoose.model('Items', itemSchema);
+const itemResolver = require('../server/graphql/resolver/ItemResolver');
 
 const items = [];
 
@@ -49,8 +50,8 @@ describe('ItemResolver', async () => {
   describe('list', () => {
     it('should return the correct count of documents', async () => {
       await Promise.resolve();
-      const result = await Items.find({});
-      expect(result.length).to.equal(items.length);
+      const result = await itemResolver().list();
+      expect(result.items.length).to.equal(items.length);
     });
   });
 });
