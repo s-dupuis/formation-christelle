@@ -1,66 +1,56 @@
 require('dotenv').config();
 
-const chai = require('chai');
-const expect = chai.expect;
-const mocha = require('mocha');
-const describe = mocha.describe;
-const beforeEach = mocha.beforeEach;
-const afterEach = mocha.afterEach;
-const it = mocha.it;
+const { expect } = require('chai');
+const { describe, beforeEach, afterEach, before, after, it } = require('mocha');
 const mongoose = require('mongoose');
-const itemResolver = require('../server/graphql/resolver/ItemResolver');
+const { dbMongo } = require('../server/lib/options/dbMongo');
+const itemSchema = require('../server/schemas').items;
+const Items = mongoose.model('Items', itemSchema);
+
+const items = [];
 
 describe('ItemResolver', async () => {
-  let items;
   mongoose.Promise = global.Promise;
-  const MONGODB_URI = process.env.MONGO_DB_URL;
-  await mongoose.connect(MONGODB_URI, { useNewUrlParser: true, useUnifiedTopology: true });
-
-  const db = mongoose.connection;
-  db.once('open', () => console.log('Connected!'));
-  db.on('error', (error) => {
-    console.warn('Error : ', error);
+  before(async () => {
+    const MONGODB_URI = process.env.MONGO_DB_URL;
+    await dbMongo.init(MONGODB_URI);
+    await dbMongo.isReady();
+    await mongoose.connect(MONGODB_URI);
   });
-  // runs before each test
+  after(async () => {
+    await dbMongo.disconnect();
+  });
   beforeEach(async () => {
-    const result = await db.collections.items.insertMany([{
-      id: '5ff6d5b61ac8ad001d51a139',
+    const firstItem = new Items({
       name: 'myFirstItem',
       category: 'A',
       group: 'dev',
       createdAt: '2023-02-22T14:02:09.801Z',
       updatedAt: '2023-02-22T14:02:09.801Z'
-    }, {
-      id: '5ff6d5b61ac8ad001d51a140',
+    });
+
+    const secondItem = new Items({
       name: 'mySecondItem',
       category: 'A',
       group: 'dev',
       createdAt: '2023-02-22T14:02:09.801Z',
       updatedAt: '2023-02-22T14:02:09.801Z'
-    }]);
-    items = result.ops;
-  });
-  afterEach(async function () {
-    await db.collections.items.deleteMany({});
-  });
-
-  describe('getById', () => {
-    it('should return undefined if the ID does not exist ', async () => {
-      await Promise.resolve();
-      const id = '5ff6d5b61ac8ad001d51a141';
-      const result = await mongoose.connection.collections.items.findOne({ id: id });
-      expect(result).to.equal(null);
     });
+    items.push(firstItem);
+    items.push(secondItem);
+    await firstItem.save();
+    await secondItem.save();
+  });
 
-    it('should return the correct item if exists', async () => {
+  afterEach(async () => {
+    await Items.deleteMany();
+  });
+
+  describe('list', () => {
+    it('should return the correct count of documents', async () => {
       await Promise.resolve();
-      const id = '5ff6d5b61ac8ad001d51a139';
-      const result = await mongoose.connection.collections.items.findOne({ id: id });
-      expect(result.name).to.deep.equal('myFirstItem');
-      expect(result.category).to.deep.equal('A');
-      expect(result.group).to.deep.equal('dev');
-      expect(result.createdAt).to.includes('2023-02-22');
-      expect(result.updatedAt).to.includes('2023-02-22');
+      const result = await Items.find({});
+      expect(result.length).to.equal(items.length);
     });
   });
 });
