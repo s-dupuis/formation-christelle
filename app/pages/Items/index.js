@@ -2,18 +2,10 @@ import React from 'react';
 import useItems from '../../hooks/useItems';
 const R = require('ramda');
 const Items = () => {
-  let items = [{
-    "_id" : "63f74fafe43f6ba34ab46457",
-    "name" : "myFirstItem",
-    "category" : "A",
-    "group" : "dev",
-    "createdAt" : "2023-02-22T14:02:09.801Z",
-    "updatedAt" : "2023-02-22T14:02:09.801Z"
-  }]
   const data = useItems().items;
 
   return (
-    <div className="tailwindcss">
+    <div className="f-page">
       <div>
         <h1>
           <table className="table">
