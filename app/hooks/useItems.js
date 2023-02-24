@@ -9,7 +9,7 @@ const useItems = () => {
   const environment = useRelayEnvironment();
 
   const [loading, setLoading] = useState(true);
-  const [items, setItems] = useState({});
+  const [items, setItems] = useState([]);
 
   useEffect(() => {
     let hasBeenCancelled = false;
