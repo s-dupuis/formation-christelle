@@ -10,6 +10,7 @@ import {
   Route
 } from 'react-router-dom';
 import SanteTns from './pages/SanteTns';
+import Items from './pages/Items';
 
 const { RelayEnvironmentProvider } = require('react-relay/hooks');
 
@@ -29,6 +30,7 @@ const RoutesComponent = () => {
                 <Routes>
                   <Route exact path="/" element={<Preface/>} />
                   <Route exact path="/sante-tns" element={<SanteTns/>} />
+                  <Route exact path="/items" element={<Items/>} />
                 </Routes>
               </Router>
             </RelayEnvironmentProvider>
