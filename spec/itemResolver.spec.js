@@ -19,7 +19,7 @@ describe('ItemResolver', async () => {
     await dbMongo.disconnect();
   });
   beforeEach(async () => {
-    const firstItem = Items.create({
+    const firstItem = await Items.create({
       name: 'myFirstItem',
       category: 'A',
       group: 'dev',
@@ -27,7 +27,7 @@ describe('ItemResolver', async () => {
       updatedAt: '2023-02-22T14:02:09.801Z'
     });
 
-    const secondItem = Items.create({
+    const secondItem = await Items.create({
       name: 'mySecondItem',
       category: 'A',
       group: 'dev',
