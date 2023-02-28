@@ -2,14 +2,14 @@
 @tailwind components;
 @tailwind utilities;
 
-/*@import "tailwindcss/base";*/
-/*@import "tailwindcss/components";*/
-/*@import "tailwindcss/utilities";*/
+@import "tailwindcss/base";
+@import "tailwindcss/components";
+@import "tailwindcss/utilities";
 
-/*@import "./fonts.css";*/
-/*@import "./styles.css";*/
+@import "./fonts.css";
+@import "./styles.css";
 
-/*@import "./layout/layout.css";*/
+@import "./layout/layout.css";
 
 /*@import "./form/attachments.css";*/
 /*@import "./form/input.css";*/
@@ -19,6 +19,7 @@
 /*!*@import "./element/popover.css";*!*/
 /*!*@import "./element/message.css";*!*/
 
+@import "./components/item.css";
 /*@import "./components/badge.css";*/
 /*@import "./components/beneficiaries.css";*/
 /*@import "./components/company.css";*/
