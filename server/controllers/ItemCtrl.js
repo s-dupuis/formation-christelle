@@ -29,9 +29,25 @@ const ItemCtrl = (() => {
     }
   };
 
+  const createCtrl = async (item) => {
+    const itemCreated = await itemService('/item', { item: item });
+
+    if (itemCreated) {
+      return {
+        ok: true,
+        item: itemCreated
+      };
+    } else {
+      return {
+        ok: false
+      };
+    }
+  };
+
   return {
     getByIdCtrl,
-    getCtrl
+    getCtrl,
+    createCtrl
   };
 })();
 

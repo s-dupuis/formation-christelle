@@ -27,8 +27,8 @@ describe('itemMockCtrl', () => {
       expect(result.name).to.deep.equal('test');
       expect(result.category).to.deep.equal('A');
       expect(result.group).to.deep.equal('group1');
-      expect(result.createdAt).to.includes('2023-02-23');
-      expect(result.updatedAt).to.includes('2023-02-23');
+      expect(result.createdAt).to.includes('2023-02-24');
+      expect(result.updatedAt).to.includes('2023-02-24');
     });
   });
   describe('list', () => {
@@ -37,8 +37,8 @@ describe('itemMockCtrl', () => {
       expect(resultList[0].name).to.deep.equal('test');
       expect(resultList[0].category).to.deep.equal('A');
       expect(resultList[0].group).to.deep.equal('group1');
-      expect(resultList[0].createdAt).to.includes('2023-02-23');
-      expect(resultList[0].updatedAt).to.includes('2023-02-23');
+      expect(resultList[0].createdAt).to.includes('2023-02-24');
+      expect(resultList[0].updatedAt).to.includes('2023-02-24');
     });
   });
   describe('remove', () => {
@@ -53,8 +53,8 @@ describe('itemMockCtrl', () => {
       expect(result.name).to.deep.equal('test');
       expect(result.category).to.deep.equal('A');
       expect(result.group).to.deep.equal('group1');
-      expect(result.createdAt).to.includes('2023-02-23');
-      expect(result.updatedAt).to.includes('2023-02-23');
+      expect(result.createdAt).to.includes('2023-02-24');
+      expect(result.updatedAt).to.includes('2023-02-24');
     });
   });
   describe('update', () => {
@@ -71,8 +71,8 @@ describe('itemMockCtrl', () => {
       expect(result[0].name).to.deep.equal('updated');
       expect(result[0].category).to.deep.equal('B');
       expect(result[0].group).to.deep.equal('group1');
-      expect(result[0].createdAt).to.includes('2023-02-23');
-      expect(result[0].updatedAt).to.includes('2023-02-23');
+      expect(result[0].createdAt).to.includes('2023-02-24');
+      expect(result[0].updatedAt).to.includes('2023-02-24');
     });
 
     it('should throw an error if item does not exist', () => {
@@ -98,8 +98,8 @@ describe('itemMockCtrl', () => {
       expect(result.name).to.deep.equal(expectedNewItem.name);
       expect(result.category).to.deep.equal(expectedNewItem.category);
       expect(result.group).to.deep.equal(expectedNewItem.group);
-      expect(result.createdAt).to.includes('2023-02-23');
-      expect(result.updatedAt).to.includes('2023-02-23');
+      expect(result.createdAt).to.includes('2023-02-24');
+      expect(result.updatedAt).to.includes('2023-02-24');
     });
 
     it('should throw an error if the data is not valid', () => {

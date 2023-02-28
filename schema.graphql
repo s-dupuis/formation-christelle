@@ -146,6 +146,12 @@ type Item {
   name: String
 }
 
+input ItemInput {
+  category: CategoryEnum
+  group: String
+  name: String
+}
+
 type ItemsStatus {
   items: [Item]
   ok: Boolean
@@ -157,6 +163,7 @@ type Mutation {
   SubscriberBeneficiaryInformation(input: SubscriberBeneficiaryInformationInput!): SubscriberBeneficiaryInformationMutationResponse
   SubscriberInformation(input: SubscriberInformationInput!): SubscriberInformationMutationResponse
   SubscriberOffer(input: SubscriberOfferInput!): SubscriberOfferMutationResponse
+  createItem(item: ItemInput!): DefaultMutationResponse
   initializeBeneficiaries(beneficiaries: BeneficiariesInput!): DefaultMutationResponse
   onSigned(subscriberId: String!): DefaultMutationResponse
   subscriberSurveyAnswers(question1: String!, question2: String!, subscriberId: String!): DefaultMutationResponse

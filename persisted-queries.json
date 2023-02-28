@@ -20,5 +20,6 @@
   "e692c8f1ca88ec0ecce5a8456c31fd22": "query QBeneficiariesQuery(\n  $subscriberId: ID!\n) {\n  getBeneficiaries(subscriberId: $subscriberId) {\n    id\n    subscriber {\n      externalId\n      civility\n      isBeneficiary\n      firstName\n      lastName\n      fullName\n      birthName\n      birthDate\n      nic\n      address\n      zipCode\n      city\n      email\n      phone\n    }\n    beneficiaries {\n      externalId\n      civility\n      beneficiaryType\n      firstName\n      lastName\n      fullName\n      nic\n    }\n    numberOfBeneficiaries\n  }\n}\n",
   "d991bd154169bac2a91c324162933a4d": "query QItemsQuery {\n  items {\n    items {\n      category\n      group\n      id\n      name\n    }\n    ok\n  }\n}\n",
   "790449b08b020a44ee11f8def8ec27a2": "query QItemsQuery {\n  items {\n    ok\n    items {\n      category\n      group\n      id\n      name\n    }\n  }\n}\n",
-  "2d69c440499ad124387d7220a4c7772f": "query QItemsQuery {\n  items {\n    ok\n    items {\n      id\n      name\n      category\n      group\n    }\n  }\n}\n"
+  "2d69c440499ad124387d7220a4c7772f": "query QItemsQuery {\n  items {\n    ok\n    items {\n      id\n      name\n      category\n      group\n    }\n  }\n}\n",
+  "7e90d487aebe5cbcd5ce75a8cae789aa": "mutation CreateItemMutation(\n  $item: ItemInput!\n) {\n  createItem(item: $item) {\n    ok\n    error\n  }\n}\n"
 }

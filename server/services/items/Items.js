@@ -15,7 +15,7 @@ const Items = (() => {
   };
   const create = async (item) => {
     const handler = await getCollectionHandler();
-    return handler.create(item);
+    return handler.create({ name: item.name, category: item.category, group: item.group });
   };
 
   const get = async ({ query = {} }) => {
