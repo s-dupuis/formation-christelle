@@ -31,7 +31,7 @@ const List = () => {
                 {R.map((item) =>
                   <tr key={item.id}>
                     {
-                      R.map(ValueCellTd, item)
+                      R.map(ValueCellTd, R.values(item))
                     }
                   </tr>
                 , data.items)
