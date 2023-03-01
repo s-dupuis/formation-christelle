@@ -1,9 +1,9 @@
 import React from 'react';
 import { useForm } from 'react-hook-form';
-import CreateItemMutation from '../../_graphql/mutations/item/CreateItemMutation';
-
+import { useItems } from '../../hooks';
 const CreateItem = ({ isModalOpen, setIsModalOpen }) => {
   const { register, handleSubmit } = useForm();
+  const { createItem, fetchData } = useItems();
 
   return (
     <div>
@@ -26,16 +26,13 @@ const CreateItem = ({ isModalOpen, setIsModalOpen }) => {
                 <div>
                   <form className="inline-table bg-gray-200 shadow-md rounded px-8 pt-6 pb-8" onSubmit={
                     handleSubmit((data) => {
-                      CreateItemMutation(data, (ok, err, response) => {
-                        if (ok) {
-                          return (response);
-                        }
-                      });
+                      createItem(data);
+                      fetchData(false);
                     })
                   }>
                     <input className="block" {...register('name', { required: 'This is required' })} placeholder='Name'/>
                     <select className="block" {...register('category')}>
-                      <option value="" disabled selected>Choisir une catégories</option>
+                      <option hidden>Choisir une catégories</option>
                       <option value="A">A</option>
                       <option value="B">B</option>
                       <option value="C">C</option>
