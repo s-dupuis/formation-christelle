@@ -1,6 +1,6 @@
 
 const {
-  getByIdCtrl, getCtrl
+  getByIdCtrl, getCtrl, createCtrl
 } = require('../../controllers/ItemCtrl');
 
 const ItemResolver = (context) => (() => {
@@ -11,9 +11,15 @@ const ItemResolver = (context) => (() => {
   const list = async () => {
     return getCtrl();
   };
+
+  const create = async (item) => {
+    return createCtrl(item);
+  };
+
   return {
     getById,
-    list
+    list,
+    create
   };
 })();
 

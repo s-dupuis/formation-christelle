@@ -1,36 +1,14 @@
-import React from 'react';
-import useItems from '../../hooks/useItems';
-const R = require('ramda');
+import React, { useState } from 'react';
+import List from './List';
+import CreateItem from './CreateItem';
 const Items = () => {
-  const data = useItems().items;
+  const [isModalOpen, setIsModalOpen] = useState(false);
 
   return (
-    <div className="f-page">
+    <div className="flex justify-center shadow-lg bg-white">
       <div>
-        <h1>
-          <table className="table">
-            <thead>
-              <tr>
-                <th scope="col">Item ID</th>
-                <th scope="col">Item Name</th>
-                <th scope="col">Item Category</th>
-                <th scope="col">Item Group</th>
-              </tr>
-            </thead>
-            <tbody>
-              {
-                R.map((item) =>
-                  <tr key={item.id}>
-                    <td>{item?.id}</td>
-                    <td>{item?.name}</td>
-                    <td>{item?.category}</td>
-                    <td>{item?.group}</td>
-                  </tr>
-                  , data?.items)
-              }
-            </tbody>
-          </table>
-        </h1>
+        <List />
+        <CreateItem isModalOpen = {isModalOpen} setIsModalOpen = {setIsModalOpen} />
       </div>
     </div>
   );

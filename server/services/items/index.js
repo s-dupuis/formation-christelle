@@ -34,6 +34,16 @@ const items = (command, args, localServiceAccessToken) => {
           return Items.get({ query: {} });
         },
         method: 'GET'
+      },
+      '/item': {
+        route: (item) => {
+          const newItem = JSON.parse(JSON.stringify(item.item));
+          return Items.create(newItem);
+        },
+        method: 'POST',
+        body: [
+          'item'
+        ]
       }
     })(command, args, auth(localServiceAccessToken));
 };
