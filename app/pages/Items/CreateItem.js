@@ -1,16 +1,22 @@
 import React from 'react';
 import { useForm } from 'react-hook-form';
-import { useItems } from '../../hooks';
-const CreateItem = ({ isModalOpen, setIsModalOpen }) => {
+import useItems from '../../hooks/useItems';
+import useGroups from '../../hooks/useGroups';
+
+const R = require('ramda');
+const CreateItem = ({ setIsModalOpen }) => {
   const { register, handleSubmit } = useForm();
   const { createItem, fetchData } = useItems();
+  const data = useGroups().groups;
+  const groupsIsNotEmpty = R.length(data.groups) > 0;
+  const ValueOptionSelect = (children) => {
+    return <option value={children.value} key={children.label}>{children.value}</option>;
+  };
 
   return (
     <div>
-      {!isModalOpen
-        ? <button
-          className="bg-purple-500 text-white rounded-md px-8 py-2 text-base font-medium hover:bg-blue-600
-          focus:outline-none focus:ring-2 focus:ring-green-300" type="button" onClick={() => setIsModalOpen(true)}>Créer</button>
+      {!groupsIsNotEmpty
+        ? <span>Aucun groupe à afficher</span>
         : <>
           <div className="flex justify-center items-center overflow-x-hidden overflow-y-auto fixed inset-0 z-50 outline-none focus:outline-none">
             <div className="relative w-auto my-6 mx-auto max-w-3xl">
@@ -38,7 +44,12 @@ const CreateItem = ({ isModalOpen, setIsModalOpen }) => {
                       <option value="C">C</option>
                       <option value="D">D</option>
                     </select>
-                    <input className="block" {...register('group')} placeholder='Groupe'/>
+                    <select className="block" {...register('group')}>
+                      <option hidden>Choisir un groupe</option>
+                      {
+                        R.map(ValueOptionSelect, data.groups)
+                      }
+                    </select>
                     <input className="block" type="submit"/>
                   </form>
                 </div>

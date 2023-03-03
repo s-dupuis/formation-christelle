@@ -6,6 +6,10 @@ const {
   ItemResolver
 } = require('../resolver');
 
+const {
+  GroupResolver
+} = require('../resolver');
+
 module.exports = {
   typeDefs: gql`
     type Query {
@@ -13,6 +17,7 @@ module.exports = {
       getBeneficiaries(subscriberId: ID!): Beneficiaries
       getItemById(itemId: ID!): GetItemByIdStatus
       items: ItemsStatus
+        groups: GroupsStatus
     }
   `,
   resolvers: {
@@ -21,7 +26,9 @@ module.exports = {
       getBeneficiaries: (parent, { subscriberId }, context) => Promise.resolve(),
       getItemById: (parent, { itemId: id }, context) => ItemResolver(context).getById(id),
       // eslint-disable-next-line no-empty-pattern
-      items: (parent, {}, context) => ItemResolver(context).list()
+      items: (parent, {}, context) => ItemResolver(context).list(),
+      // eslint-disable-next-line no-empty-pattern
+      groups: (parent, {}, context) => GroupResolver(context).get()
     }
   }
 };
