@@ -21,5 +21,7 @@
   "d991bd154169bac2a91c324162933a4d": "query QItemsQuery {\n  items {\n    items {\n      category\n      group\n      id\n      name\n    }\n    ok\n  }\n}\n",
   "790449b08b020a44ee11f8def8ec27a2": "query QItemsQuery {\n  items {\n    ok\n    items {\n      category\n      group\n      id\n      name\n    }\n  }\n}\n",
   "2d69c440499ad124387d7220a4c7772f": "query QItemsQuery {\n  items {\n    ok\n    items {\n      id\n      name\n      category\n      group\n    }\n  }\n}\n",
-  "7e90d487aebe5cbcd5ce75a8cae789aa": "mutation CreateItemMutation(\n  $item: ItemInput!\n) {\n  createItem(item: $item) {\n    ok\n    error\n  }\n}\n"
+  "7e90d487aebe5cbcd5ce75a8cae789aa": "mutation CreateItemMutation(\n  $item: ItemInput!\n) {\n  createItem(item: $item) {\n    ok\n    error\n  }\n}\n",
+  "8971b875abaa3888d096a7b9e91773e2": "query QGroupsQuery {\n  groups {\n    ok\n    groups\n  }\n}\n",
+  "f1d9bd915fae84915f0fd439de7aaf79": "query QGroupsQuery {\n  groups {\n    ok\n    groups {\n      label\n      value\n    }\n  }\n}\n"
 }

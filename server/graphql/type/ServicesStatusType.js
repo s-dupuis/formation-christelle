@@ -27,6 +27,10 @@ module.exports = {
         ok: Boolean
         items: [Item]
     }
+    type GroupsStatus {
+        ok: Boolean
+        groups: [Group]
+    }
   `,
   resolvers: {
   }

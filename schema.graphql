@@ -139,6 +139,16 @@ type GetItemByIdStatus {
   ok: Boolean
 }
 
+type Group {
+  label: String
+  value: String
+}
+
+type GroupsStatus {
+  groups: [Group]
+  ok: Boolean
+}
+
 type Item {
   category: CategoryEnum
   group: String
@@ -191,6 +201,7 @@ type Query {
   contract(subscriberId: ID!): Contract
   getBeneficiaries(subscriberId: ID!): Beneficiaries
   getItemById(itemId: ID!): GetItemByIdStatus
+  groups: GroupsStatus
   items: ItemsStatus
 }
 

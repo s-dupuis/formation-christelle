@@ -25,3 +25,29 @@ services:
 #    volumes:
 #      - ./server:/service/server
 #    command: yarn server:dev
+  groups:
+    #    image: fasstech/fasst_sso
+    image: sample_project
+    build:
+      context: .
+      target: packages
+      args:
+        NPM_TOKEN: ${NPM_TOKEN}
+    ports:
+      - 3000:3000
+    environment:
+      PORT: 3000
+      NODE_ENV: development
+      ROOT_DIR: /service
+      MONGO_DB_URL: mongodb://host.docker.internal:27017/sso
+    entrypoint:
+      npm run server:development
+    volumes:
+      - ./env:/service/env
+      - ./spec:/service/spec
+      - ./src:/service/src
+      - ./util:/service/util
+      - ./package.json:/service/package.json
+      - ./config:/service/config
+      - ./envVars.yml:/service/envVars.yml
+      - ./node_modules:/service/node_modules/
