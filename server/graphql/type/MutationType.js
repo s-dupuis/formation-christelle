@@ -21,6 +21,8 @@ module.exports = {
       onSigned(subscriberId: String!): DefaultMutationResponse
       subscriberSurveyAnswers(subscriberId: String!, question1: String!, question2: String!): DefaultMutationResponse
         createItem(item: ItemInput!): DefaultMutationResponse
+        deleteItem(itemId: String!): DefaultMutationResponse
+        updateItem(itemId: String!, data: ItemInput!): DefaultMutationResponse
     }
   `,
 
@@ -29,7 +31,9 @@ module.exports = {
       initializeBeneficiaries: (parent, { beneficiaries }, context) => Promise.resolve(),
       onSigned: (parent, { subscriberId }, context) => Promise.resolve(),
       subscriberSurveyAnswers: (parent, { subscriberId, question1, question2 }, context) => Promise.resolve(),
-      createItem: (parent, { item }, context) => ItemResolver(context).create(item)
+      createItem: (parent, { item }, context) => ItemResolver(context).create(item),
+      deleteItem: (parent, { itemId }, context) => ItemResolver(context).remove(itemId),
+      updateItem: (parent, { itemId, data }, context)=> ItemResolver(context).update(itemId, data)
     },
     MutationResponse: {
       __resolveType () {

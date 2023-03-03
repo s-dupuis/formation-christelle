@@ -174,9 +174,11 @@ type Mutation {
   SubscriberInformation(input: SubscriberInformationInput!): SubscriberInformationMutationResponse
   SubscriberOffer(input: SubscriberOfferInput!): SubscriberOfferMutationResponse
   createItem(item: ItemInput!): DefaultMutationResponse
+  deleteItem(itemId: String!): DefaultMutationResponse
   initializeBeneficiaries(beneficiaries: BeneficiariesInput!): DefaultMutationResponse
   onSigned(subscriberId: String!): DefaultMutationResponse
   subscriberSurveyAnswers(question1: String!, question2: String!, subscriberId: String!): DefaultMutationResponse
+  updateItem(data: ItemInput!, itemId: String!): DefaultMutationResponse
 }
 
 interface MutationResponse {

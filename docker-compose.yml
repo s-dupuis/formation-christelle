@@ -39,7 +39,7 @@ services:
       PORT: 3000
       NODE_ENV: development
       ROOT_DIR: /service
-      MONGO_DB_URL: mongodb://host.docker.internal:27017/sso
+      MONGO_DB_URL: mongodb://host.docker.internal:27017/groups
     entrypoint:
       npm run server:development
     volumes:

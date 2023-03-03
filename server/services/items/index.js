@@ -44,6 +44,38 @@ const items = (command, args, localServiceAccessToken) => {
         body: [
           'item'
         ]
+      },
+      '/delete': {
+        route: async (itemId) => {
+          const item = await Items.remove(itemId);
+          if ((R.isNil(item))) {
+            return {
+              itemId,
+              item: null
+            };
+          }
+          return item;
+        },
+        method: 'DELETE',
+        query: [
+          'itemId'
+        ]
+      },
+      '/update': {
+        route: async (query) => {
+          const item = await Items.update({ itemId: query.itemId, data: query.data });
+          if ((R.isNil(item))) {
+            return {
+              itemId: query.itemId,
+              item: null
+            };
+          }
+          return item;
+        },
+        method: 'PUT',
+        query: [
+          'itemId', 'data'
+        ]
       }
     })(command, args, auth(localServiceAccessToken));
 };

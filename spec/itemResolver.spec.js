@@ -49,4 +49,16 @@ describe('ItemResolver', async () => {
       expect(result.ok).to.equal(true);
     });
   });
+  describe('remove', () => {
+    it('should delete the document', async () => {
+      const result = await itemResolver().remove('6401fbc34e468a205c3fa338');
+      expect(result.ok).to.equal(true);
+    });
+  });
+  describe('update', () => {
+    it('should update the document', async () => {
+      const result = await itemResolver().update('6401fd2f60167d22877e9924', { name: 'testUpdate', category: 'C', group: 'group3' });
+      expect(result.ok).to.equal(true);
+    });
+  });
 });

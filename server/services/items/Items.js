@@ -28,12 +28,14 @@ const Items = (() => {
     return handler.findOne({ _id: toObjectId(query.itemId) });
   };
 
-  const remove = async ({ itemId }) => {
-
+  const remove = async (query) => {
+    const handler = await getCollectionHandler();
+    return handler.deleteOne({ _id: toObjectId(query.itemId) });
   };
 
-  const update = async ({ itemId }) => {
-
+  const update = async (query) => {
+    const handler = await getCollectionHandler();
+    return handler.updateOne({ _id: toObjectId(query.itemId) }, query.data);
   };
 
   return {

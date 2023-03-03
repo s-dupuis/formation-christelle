@@ -44,10 +44,42 @@ const ItemCtrl = (() => {
     }
   };
 
+  const removeCtrl = async (id) => {
+    const item = await itemService('/delete', { itemId: id });
+
+    if (item) {
+      return {
+        ok: true,
+        item: item
+      };
+    } else {
+      return {
+        ok: false
+      };
+    }
+  };
+  const updateCtrl = async (id, data) => {
+    console.log(id);
+    console.log(data);
+    const item = await itemService('/update', { itemId: id, data: data });
+    if (item) {
+      return {
+        ok: true,
+        item: item
+      };
+    } else {
+      return {
+        ok: false
+      };
+    }
+  };
+
   return {
     getByIdCtrl,
     getCtrl,
-    createCtrl
+    createCtrl,
+    removeCtrl,
+    updateCtrl
   };
 })();
 

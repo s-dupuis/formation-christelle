@@ -6,7 +6,8 @@ import useBeneficiaries from './useBeneficiaries';
 import useQueryContext from './useQueryContext';
 import useModal from './useModal';
 import useItems from './useItems';
-
+import useGroup from './useGroups';
+import useUpdateItemModal from './useUpdateItemModal';
 export {
   useFetching,
   useOffers,
@@ -15,5 +16,7 @@ export {
   useBeneficiaries,
   useQueryContext,
   useModal,
-  useItems
+  useItems,
+  useGroup,
+  useUpdateItemModal
 };

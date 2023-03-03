@@ -4,10 +4,11 @@ import useItems from '../../hooks/useItems';
 import useGroups from '../../hooks/useGroups';
 
 const R = require('ramda');
-const CreateItem = ({ setIsModalOpen, setLoading }) => {
+const UpdateItem = ({ setIsUpdateItemModalOpen, setLoading, itemId }) => {
   const { register, handleSubmit } = useForm();
-  const { createItem } = useItems();
+  const { updateItem } = useItems();
   const { groups } = useGroups();
+
   const ValueOptionSelect = (children) => {
     return <option value={children.value} key={children.label}>{children.value}</option>;
   };
@@ -19,8 +20,8 @@ const CreateItem = ({ setIsModalOpen, setLoading }) => {
           <div className="relative w-auto my-6 mx-auto max-w-3xl">
             <div className="border-0 rounded-lg shadow-lg relative flex flex-col w-full bg-white outline-none focus:outline-none">
               <div className="flex items-start justify-between p-5 border border-solid border-gray-300 rounded">
-                <h3 className="text-3xl font=semibold">Créer un item</h3>
-                <button className="bg-transparent border-0 text-black float-right" onClick={() => setIsModalOpen(false)}>
+                <h3 className="text-3xl font=semibold">Modifier un item</h3>
+                <button className="bg-transparent border-0 text-black float-right" onClick={() => setIsUpdateItemModalOpen(false)}>
                   <span className="text-black opacity-7 h-6 w-6 text-xl block bg-white py-0 rounded-full">
                       x
                   </span>
@@ -29,8 +30,8 @@ const CreateItem = ({ setIsModalOpen, setLoading }) => {
               <div>
                 <form className="inline-table bg-gray-200 shadow-md rounded px-8 pt-6 pb-8" onSubmit={
                   handleSubmit((data) => {
-                    createItem(data);
-                    setIsModalOpen(false);
+                    updateItem(itemId, data);
+                    setIsUpdateItemModalOpen(false);
                     setLoading(true);
                   })
                 }>
@@ -60,4 +61,4 @@ const CreateItem = ({ setIsModalOpen, setLoading }) => {
   );
 };
 
-export default CreateItem;
+export default UpdateItem;

@@ -23,5 +23,7 @@
   "2d69c440499ad124387d7220a4c7772f": "query QItemsQuery {\n  items {\n    ok\n    items {\n      id\n      name\n      category\n      group\n    }\n  }\n}\n",
   "7e90d487aebe5cbcd5ce75a8cae789aa": "mutation CreateItemMutation(\n  $item: ItemInput!\n) {\n  createItem(item: $item) {\n    ok\n    error\n  }\n}\n",
   "8971b875abaa3888d096a7b9e91773e2": "query QGroupsQuery {\n  groups {\n    ok\n    groups\n  }\n}\n",
-  "f1d9bd915fae84915f0fd439de7aaf79": "query QGroupsQuery {\n  groups {\n    ok\n    groups {\n      label\n      value\n    }\n  }\n}\n"
+  "f1d9bd915fae84915f0fd439de7aaf79": "query QGroupsQuery {\n  groups {\n    ok\n    groups {\n      label\n      value\n    }\n  }\n}\n",
+  "ac8b76d272d47ca4ba5db75fc574c2c7": "mutation DeleteItemMutation(\n  $itemId: String!\n) {\n  deleteItem(itemId: $itemId) {\n    ok\n    error\n  }\n}\n",
+  "f3e41ae644e10e4316792e86fa873094": "mutation UpdateItemMutation(\n  $itemId: String!\n  $data: ItemInput!\n) {\n  updateItem(itemId: $itemId, data: $data) {\n    ok\n    error\n  }\n}\n"
 }
